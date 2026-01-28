@@ -1,0 +1,47 @@
+body {
+  background-color: #abd5de;
+  margin: auto;
+  width: 50%;
+  border: 3px solid #2f494f;
+  padding: 10px;
+}
+
+#text-heading {
+  margin: auto;
+  text-align: center;
+  background-color: #6ca1ad;
+  padding: 20px;
+}
+
+/*THIS ENTIRE BLOCK COULD BE A CHALLENGE*/
+#giant {
+  font-size: 5em;
+  font-family: "Roboto Slab", serif;
+}
+
+#game-grid {
+  background-color: #2f494f;
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 10px;
+}
+
+.piece {
+  width: 100%;
+  height: 100%;
+  font-size: 2em;
+}
+
+.button-frame {
+  background-color: white;
+  width: 100px;
+  height: 100px;
+}
+
+.center {
+  background-color: #83becc;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border: 3px solid #2f494f;
+}
