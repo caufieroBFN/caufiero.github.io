@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="js_countdown_day10.css">
+    </head>
+
+    <body>
+        <div id="title">
+            <span class="massive-text">JavaScript Countdowns</span>
+        </div>
+
+        <span id="close-popup" onclick="toggleWindow()">&times;</span>
+        <div id="popup-overlay">
+            <div class="popup">
+
+                <p>Event Name</p>
+                <input type="text" id="event-name">
+
+                <p>Event Date</p>
+                <input type="date" id="event-date">
+
+                <p>Event Time</p>
+                <input type="time" id="event-time">
+
+                <p>Event Color</p>
+                <input type="color" id="event-color" value="#e66465">
+                <br>
+                <button id="new-count-button"
+                    onclick="newCounter()">Submit</button>
+            </div>
+        </div>
+
+        <div id="countdown-section">
+            <!--COUNTDOWN ONE-->
+            <div class="countdown-block">
+                <div class="count-name">
+                    <span class="massive-text">NULL</span>
+                </div>
+                <div class="count-num">
+                    <span class="count-text">00:00:00</span>
+                </div>
+            </div>
+
+            <!--COUNTDOWN ONE-->
+            <div class="countdown-block">
+                <div class="count-name">
+                    <span class="massive-text">NULL</span>
+                </div>
+                <div class="count-num">
+                    <span class="count-text">00:00:00</span>
+                </div>
+            </div>
+
+            <!--COUNTDOWN ONE-->
+            <div class="countdown-block">
+                <div class="count-name">
+                    <span class="massive-text">NULL</span>
+                </div>
+                <div class="count-num">
+                    <span class="count-text">00:00:00</span>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="js_countdown_day10.js"></script>
+    </body>
+
+</html>

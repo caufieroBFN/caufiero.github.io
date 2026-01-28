@@ -1,0 +1,22 @@
+.massive-text {
+  font-size: 1.5em;
+  font-weight: 900;
+}
+
+.count-text {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+#countdown-section {
+  content: "";
+}
+
+.countdown-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3em;
+  overflow: hidden;
+  background-color: gray;
+}
