@@ -177,6 +177,8 @@ function setup() {
     windowWidth = 800;
     windowHeight = 600;
     createCanvas(windowWidth, windowHeight);
+
+    canvas.parent("canvas-container");
 }
 
 //This one happens constantly

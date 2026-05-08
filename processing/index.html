@@ -4,19 +4,29 @@
 <head>
     <title>p5.js + HTML Example</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>p5.js with HTML</h1>
-    <button onclick="setup()">Reset</button>
+    <div class="center">
+        <div id="title">
+            <h1>JavaScript Particle Effects</h1>
+        </div>
 
-    <!--<script src="script.js"></script>-->
-    <script src="sketch/Particle.js"></script>
-    <script src="sketch/SparkParticle.js"></script>
-    <script src="sketch/FloatParticle.js"></script>
-    <script src="sketch/StarParticle.js"></script>
-    <script src="sketch/RadialParticle.js"></script>
-    <script src="sketch/sketch.js"></script>
+        <div id="subtitle">
+            <h4>Click the left mouse button to switch particles</h4>
+        </div>
+
+        <!--<script src="script.js"></script>-->
+        <div id="canvas-container"></div>
+
+        <script src="sketch/Particle.js"></script>
+        <script src="sketch/SparkParticle.js"></script>
+        <script src="sketch/FloatParticle.js"></script>
+        <script src="sketch/StarParticle.js"></script>
+        <script src="sketch/RadialParticle.js"></script>
+        <script src="sketch/sketch.js"></script>
+    </div>
 </body>
 
 </html>

@@ -18,7 +18,8 @@ let particleSetting = 0;
 function setup() {
     windowWidth = 800;
     windowHeight = 600;
-    createCanvas(windowWidth, windowHeight);
+
+    createCanvas(windowWidth, windowHeight).parent("canvas-container");
 }
 
 //This one happens constantly
