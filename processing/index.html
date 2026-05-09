@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>p5.js + HTML Example</title>
+    <title>JS Particle System</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,10 +14,16 @@
         </div>
 
         <div id="subtitle">
-            <h4>Click the left mouse button to switch particles</h4>
+            <h4></h4>
         </div>
 
-        <!--<script src="script.js"></script>-->
+        <div id="button-row">
+            <button class="btn phase1">1</button>
+            <button class="btn phase2">2</button>
+            <button class="btn phase3">3</button>
+            <button class="btn phase4">4</button>
+        </div>
+
         <div id="canvas-container"></div>
 
         <script src="sketch/Particle.js"></script>
@@ -26,6 +32,7 @@
         <script src="sketch/StarParticle.js"></script>
         <script src="sketch/RadialParticle.js"></script>
         <script src="sketch/sketch.js"></script>
+        <script src="sketch/buttons.js"></script>
     </div>
 </body>
 

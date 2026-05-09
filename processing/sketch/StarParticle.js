@@ -6,6 +6,8 @@ class StarParticle extends Particle {
         this.speedStartModY = .1;
 
         this.lifespan = 125;
+
+        this.flashColor = color(0, 0, 100);
     }
 
     //sparks get pulled down by gravity
@@ -36,5 +38,10 @@ class StarParticle extends Particle {
 
         //fade away
         this.color.setAlpha(this.lifespan * 2);
+    }
+
+    clickAction() {
+        this.speedX *= 6;
+        this.speedY *= 6;
     }
 }

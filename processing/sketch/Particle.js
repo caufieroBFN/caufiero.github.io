@@ -19,8 +19,11 @@ class Particle {
         this.speedStartModY = 1;
 
         //future feature for life timer
-        this.lifespan = 75;
+        this.lifespan = 100;
         this.remove = false;
+
+        //possible flash effects??
+        this.flashColor = color(75);
     }
 
     //Draws the shape of the particle on screen
@@ -56,6 +59,10 @@ class Particle {
         if (this.lifespan < 0) {
             this.remove = true;
         }
+    }
+
+    clickAction() {
+        //specific burst ability for each particle
     }
 
 

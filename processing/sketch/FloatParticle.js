@@ -21,4 +21,9 @@ class FloatParticle extends Particle {
         this.color.setAlpha(this.lifespan * 2);
     }
 
+    clickAction() {
+        this.speedX *= 3;
+        this.speedY *= 3;
+    }
+
 }
