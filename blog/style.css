@@ -1,0 +1,22 @@
+#responses {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+
+.message-box {
+    background-color: rgb(56, 56, 56);
+    padding:1.25em;
+    border-bottom: 3px solid black;
+}
+
+.user {
+    color: red;
+    display: block;
+    font-weight: bolder;
+    font-size: 1.25em;
+}
+
+.message {
+    color: white;
+}
