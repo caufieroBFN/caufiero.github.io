@@ -56,12 +56,12 @@ function loadData() {
                 const refBlock = document.querySelector(".message-box");
                 const cloneBlock = refBlock.cloneNode(true);
 
-                refBlock.querySelector(".user").textContent = currentName;
-                refBlock.querySelector(".user").style.color = currentColor;
-                refBlock.querySelector(".message").textContent = currentMessage;
+                cloneBlock.querySelector(".user").textContent = currentName;
+                cloneBlock.querySelector(".user").style.color = currentColor;
+                cloneBlock.querySelector(".message").textContent = currentMessage;
 
                 //append this new message into the DOM
-                document.getElementById("responses").appendChild(cloneBlock);
+                document.getElementById("responses").prepend(cloneBlock);
 
             } else {
                 //do something error handling here
