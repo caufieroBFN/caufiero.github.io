@@ -1,5 +1,19 @@
-let fft, amplitude;
+/// <reference path="./global.d.ts" />
+let fft;
 
+
+let windowWidth = 800;
+let windowHeight = 600;
+
+let bgMove = 100;
+
+let song = null;
+
+let middleRotateValue = 0;
+
+let highSize = 150;
+let lowSize = 150;
+let easing = 0.1;
 
 function preload() {
     song = loadSound('sound/test_track.mp3');
@@ -7,52 +21,111 @@ function preload() {
 }
 
 function setup() {
-    windowWidth = 800;
-    windowHeight = 600;
-    createCanvas(windowWidth, windowHeight, WEBGL);
+    createCanvas(windowWidth, windowHeight).parent("canvas-container");;
 
     fft = new p5.FFT(0, 64);
-    amplitude = new p5.Amplitude();
 }
 
 function draw() {
+    //checkered background behind all elements
+    drawBackground();
+
+    //Middle element
+    middleElement();
+
+    //rectangles go on bottom to always overlay background
+    drawBlocks();
+}
+
+function drawBackground() {
     background(0);
 
-    push();
-    translate(-windowWidth / 2, -windowHeight / 2);
+    bgMove++;
+    if (bgMove > 200) {
+        bgMove = 100;
+    }
 
-    let height = windowHeight;
-    let barHeight = height - 200;
+    fill(20);
+    push();
+    rotate(QUARTER_PI);
+    translate(-300, -800);
+    for (let i = 0; i < 15; i++) {
+        for (let j = 0; j < 15; j++) {
+            rect((j * 100) + bgMove, i * 100, 100, 100);
+        }
+    }
+
+    pop();
+}
+
+function middleElement() {
 
     let spectrum = fft.analyze();
-    noStroke();
+    let lowFreq = 0;
+    let highFreq = 0;
+
+    //find low frequencies
+    for (let i = 0; i < spectrum.length; i++) {
+        if (i < spectrum.length / 2) {
+            lowFreq += spectrum[i];
+        } else {
+            highFreq += spectrum[i];
+        }
+    }
+
+    //shorten these values for size
+    let lowFreqSize = Math.round(lowFreq / 500) * 50
+    let highFreqSize = Math.round(highFreq / 500) * 50
+
+    push();
+    rectMode(CENTER);
+    noFill();
+    stroke(150, 0, 0);
+    strokeWeight(10);
+
+
+    translate(windowWidth / 2, windowHeight / 2);
+    rotate(middleRotateValue);
+
+
+    highSize = highSize + (highFreqSize - highSize) * easing;
+    rect(0, 0, highSize, highSize);
+
+    pop();
+
+    push();
+    rectMode(CENTER);
+    noFill();
+    stroke(75, 0, 0);
+    strokeWeight(10);
+
+    translate(windowWidth / 2, windowHeight / 2);
+    rotate(middleRotateValue * -1);
+
+    lowSize = lowSize + (lowFreqSize - lowSize) * easing;
+    rect(0, 0, lowSize, lowSize);
+    pop();
+
+    middleRotateValue += 0.01;
+
+}
+
+function drawBlocks() {
+    let spectrum = fft.analyze();
+
+    let rectX = 20;
+    let rectY = windowHeight;
+    let rectSizeX = 20;
+    let rectSizeY = 100;
 
     for (let i = 0; i < spectrum.length; i++) {
-        let x = map(i, 0, spectrum.length, 0, width);
-        let h = -height + map(spectrum[i], 0, 255, height, barHeight);
+        let redAdjustment = i * (255 / spectrum.length);
+        let greenAdjustment = 255 - (i * (255 / spectrum.length));
+        let blueAdjustment = 255;
 
-        let redAdjustment = (i % 10) * 20;
-        let greenAdjustment = 255 - ((i % 10) * 20);
-        fill(redAdjustment, greenAdjustment, 255);
-
-        rect(x * 2, height, width / spectrum.length - 10, h);
+        fill(redAdjustment, greenAdjustment, blueAdjustment);
+        rect(rectX * i, rectY, rectSizeX, rectSizeY - (spectrum[i] * 2));
     }
-    pop();
-
-    //3d box
-    // Box
-    push();
-    translate(-75, -100, 0);
-    rotateWithFrameCount();
-
-    let level = amplitude.getLevel();
-    let size = map(level, 0, 1, 1, 5);
-
-    fill(200*size,0,0);
-
-    box(70 * size, 70 * size, 70 * size);
-    pop();
-
 }
 
 function mousePressed() {
@@ -60,13 +133,6 @@ function mousePressed() {
         song.pause();
     } else {
         song.play();
-        amplitude.setInput(sound);
     }
 }
 
-// Rotate 1 degree per frame along all three axes
-function rotateWithFrameCount() {
-    rotateZ(frameCount * 0.01);
-    rotateX(frameCount * 0.01);
-    rotateY(frameCount * 0.01);
-}
